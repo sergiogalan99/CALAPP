@@ -27,15 +27,24 @@
 <ion-content>
 
 
-  <ion-card *ngFor="let incidencia of (incidencias | async)">
+  <ion-card style="background-color: black;colo:white" *ngFor="let incidencia of incidencias">
     <img class="logo-img" src="assets/img/1.png"/>
-    <ion-card-header>
-      <ion-card-subtitle>Destination</ion-card-subtitle>
-      <ion-card-title>{{incidencia.nombreTipologia}}</ion-card-title>
+    <ion-card-header class="cardIncidencias" >
+      <ion-card-subtitle class="cardIncidencias" > <ion-icon style = "margin-right: 10px; font-size: 15px;"name="calendar"></ion-icon>{{incidencia.fecha}}</ion-card-subtitle>
+      <ion-card-title style="color: brown;" class="cardIncidencias" >{{incidencia.nombreTipologia}}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content class="cardIncidencias" >
       {{incidencia.descripcion}}
+     
+     
+    
     </ion-card-content>
+    <ion-footer class="cardIncidencias" >
+      <ion-icon style = "margin-right: 10px; font-size: 15px;" name="map"></ion-icon>
+      {{incidencia.localizacion}}
+
+    </ion-footer>
+
   </ion-card>
 
 </ion-content>

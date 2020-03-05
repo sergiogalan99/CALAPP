@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TipoIncidencia } from 'src/app/core/model/tipoIncidencia';
-import { CreateIncidenciaService } from 'src/app/services/create-incidencia.service';
+import { TipoIncidencia } from 'src/app/core/model/TipoIncidencia';
+import { IncidenciaService } from 'src/app/services/incidencia.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,13 +8,24 @@ import { Observable } from 'rxjs';
   templateUrl: './all-incidencias.page.html',
   styleUrls: ['./all-incidencias.page.scss'],
 })
-export class AllIncidenciasPage  implements OnInit {
- 
-  private incidencias: Observable<TipoIncidencia[]>;
-  constructor(private fbService: CreateIncidenciaService) { }
+export class AllIncidenciasPage  {
 
-  ngOnInit(): void {
-    this.incidencias = this.fbService.getIncidencias();
-    
+  private incidencias: Array<any>;
+
+  constructor(private incidenciaService: IncidenciaService) {
+  }
+
+  ionViewDidEnter() {
+    this.incidencias = [];
+    this.getAll();
+  }
+
+  getAll() {
+    this.incidenciaService.getAll().subscribe(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        console.log(doc.id, ' => ', doc.data());
+        this.incidencias.push(doc.data());
+      });
+    });
   }
 }

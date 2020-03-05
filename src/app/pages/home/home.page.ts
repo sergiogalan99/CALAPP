@@ -22,15 +22,14 @@ export class HomePage {
 
   login() {
 
-    this.auth.signInWithEmail(this.email, this.password)
+    this.auth.login(this.email, this.password)
       .then(() => this.routesv.navigateByUrl('/menu'),
-    
         error => this.loginError = error.message
       );
   }
 
 
- 
+
 
 
 

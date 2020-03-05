@@ -32,8 +32,8 @@
       <ion-icon slot="start" name="build"></ion-icon>
    
     <ion-label>
-      <h3>Tipologia</h3>
-      <p>{{itemSeleccionado}}</p>
+      <h3 style="color:orangered">Tipologia</h3>
+      <p>{{itemSeleccionado}}</p> 
     </ion-label>
   </ion-item>
 
@@ -42,8 +42,10 @@
       <ion-icon slot="start" name="calendar"></ion-icon>
    
     <ion-label>
-      <h3>Fecha</h3>
-      <p>{{fecha}}</p>
+      <h3 style="color:orangered">Fecha</h3>
+      
+        <ion-datetime  style="margin-left: 0px;" displayFormat="DD-MM-YYYY" [(ngModel)]="myDate"></ion-datetime>
+    
     </ion-label>
   </ion-item>
 
@@ -54,10 +56,10 @@
     <ion-icon slot="start" name="camera"></ion-icon>
  
   <ion-label>
-    <h3>Foto</h3>
-    <p><button ion-button block (click)="getPicture()">Toma una foto</button></p>
+    <h3 style="color:orangered">Foto</h3>
+    <p><ion-button expand="block" (click)="getPicture()">Toma una foto</ion-button></p>
     <p><img  [src]="image" *ngIf="image" /></p>
-    <p>{{image}}</p>
+     <p>{{image}}</p>
   </ion-label>
   
 </ion-item>
@@ -70,7 +72,7 @@
       <ion-icon slot="start" name="compass"></ion-icon>
    
     <ion-label>
-      <h3>Localizacion</h3>
+      <h3 style="color:orangered">Localizacion</h3>
     
         <p placeholder="Introduce la direccion"></p>
   
@@ -84,9 +86,9 @@
  
   <ion-label>
     
-    <h3>Descripcion</h3>
+    <h3 style="color:orangered">Descripcion</h3>
     <ion-item style="margin-left: 0px;">
-      <ion-textarea [(ngModel)]="tipologia.descripcion"  placeholder="Cuéntanos un poco sobre la incidencia..."></ion-textarea>
+      <ion-textarea [(ngModel)]="descripcion"  placeholder="Cuéntanos un poco sobre la incidencia..."></ion-textarea> 
     </ion-item>
   </ion-label>
 </ion-item>

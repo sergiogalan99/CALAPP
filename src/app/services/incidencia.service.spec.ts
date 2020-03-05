@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CreateIncidenciaService } from './create-incidencia.service';
+import { IncidenciaService } from './incidencia.service';
 
 describe('CreateIncidenciaService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: CreateIncidenciaService = TestBed.get(CreateIncidenciaService);
+    const service: IncidenciaService = TestBed.get(IncidenciaService);
     expect(service).toBeTruthy();
   });
 });

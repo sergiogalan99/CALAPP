@@ -1,6 +1,6 @@
 import { AutenticacionService } from './../../services/autenticacion.service';
-import { TipoIncidencia } from './../../core/model/tipoIncidencia';
-import { CreateIncidenciaService } from 'src/app/services/create-incidencia.service';
+import { TipoIncidencia } from '../../core/model/TipoIncidencia';
+import { IncidenciaService } from 'src/app/services/incidencia.service';
 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Component, OnInit } from '@angular/core';
@@ -16,20 +16,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio.page.scss'],
 
 })
-export class InicioPage implements OnInit {
+export class InicioPage {
   res: string;
-  private incidencias: Observable<TipoIncidencia[]>;
-  constructor(private fbService: CreateIncidenciaService, private autenticacion: AutenticacionService, private routesv: Router) { }
-
-  ngOnInit(): void {
-    this.incidencias = this.fbService.getIncidencias();
-  }
+  constructor(private autenticacionService: AutenticacionService, private routesv: Router) { }
 
   logout() {
-    this.autenticacion.logout().then(data => {
+    this.autenticacionService.logout().then(data => {
       this.routesv.navigateByUrl('/home');
     }).catch(data => {
       this.res = 'Error al cerrar sesión';
     });
-}
+  }
 }

@@ -18,7 +18,7 @@ export class AutenticacionService {
     });
   }
 
-  signInWithEmail(email: string, password: string) {
+  login(email: string, password: string) {
     console.log('Login');
     return this.firebase.auth.signInWithEmailAndPassword(email,
       password);

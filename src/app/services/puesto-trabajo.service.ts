@@ -1,7 +1,7 @@
 import { Puestotrabajo } from '../core/model/PuestoTrabajo';
 import { AutenticacionService } from './autenticacion.service';
-import { Injectable, Query } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
+import { Injectable } from '@angular/core';
+import { AngularFirestore} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class PuestoTrabajoService {
 
-  constructor(private afStoreSv: AngularFirestore, private autentication: AutenticacionService, private db: AngularFirestore) { }
+  constructor(private autentication: AutenticacionService,
+              private db: AngularFirestore) { }
 
   add(puesto: Puestotrabajo): Promise<any> {
     return this.db.collection('puestos').add({

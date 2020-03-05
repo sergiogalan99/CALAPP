@@ -1,0 +1,7 @@
+{
+  "name": "mockReal4",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

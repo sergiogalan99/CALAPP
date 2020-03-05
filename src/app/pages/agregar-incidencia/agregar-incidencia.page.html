@@ -1,0 +1,102 @@
+<ion-header no-border>
+
+  <div class="login-header ion-padding">
+
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" style="text-align: left;">
+          <h1 big-headingTres>
+            <ion-buttons slot="start">
+              <ion-back-button slot="end" defaultHref="nueva-incidencia"></ion-back-button>
+            </ion-buttons>
+          </h1>
+        </ion-col>
+        <ion-col size="8">
+          <h1 big-headingDos>Observaciones</h1>
+        </ion-col>
+        <ion-col size="2">
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-header>
+<ion-content>
+
+ <ion-content>
+  <ion-list>
+    <ion-item>
+     
+      <ion-icon slot="start" name="build"></ion-icon>
+   
+    <ion-label>
+      <h3>Tipologia</h3>
+      <p>{{itemSeleccionado}}</p>
+    </ion-label>
+  </ion-item>
+
+    <ion-item>
+     
+      <ion-icon slot="start" name="calendar"></ion-icon>
+   
+    <ion-label>
+      <h3>Fecha</h3>
+      <p>{{fecha}}</p>
+    </ion-label>
+  </ion-item>
+
+
+  
+  <ion-item>
+     
+    <ion-icon slot="start" name="camera"></ion-icon>
+ 
+  <ion-label>
+    <h3>Foto</h3>
+    <p><button ion-button block (click)="getPicture()">Toma una foto</button></p>
+    <p><img  [src]="image" *ngIf="image" /></p>
+    <p>{{image}}</p>
+  </ion-label>
+  
+</ion-item>
+
+
+
+    
+    <ion-item>
+     
+      <ion-icon slot="start" name="compass"></ion-icon>
+   
+    <ion-label>
+      <h3>Localizacion</h3>
+    
+        <p placeholder="Introduce la direccion"></p>
+  
+    </ion-label>
+  </ion-item>
+
+
+  <ion-item>
+     
+    <ion-icon slot="start" name="brush"></ion-icon>
+ 
+  <ion-label>
+    
+    <h3>Descripcion</h3>
+    <ion-item style="margin-left: 0px;">
+      <ion-textarea [(ngModel)]="tipologia.descripcion"  placeholder="Cuéntanos un poco sobre la incidencia..."></ion-textarea>
+    </ion-item>
+  </ion-label>
+</ion-item>
+
+
+
+  </ion-list>
+  <ion-button style="margin-left: 15px; margin-right: 15px;" color="success" class="ion-button-class" shape="round" fill="solid" size="large" expand="block" (click)="enviarIncidencia()">Enviar</ion-button>
+  <ion-label class="labelStyle" style="color:red;">{{ res }}</ion-label>
+</ion-content>
+
+
+</ion-content>

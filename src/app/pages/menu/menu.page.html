@@ -1,0 +1,66 @@
+<ion-header no-border>
+
+  <div class="login-header ion-padding">
+
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" style="text-align: left;">
+          <h1 big-headingTres>
+         
+          
+          </h1>
+        </ion-col>
+        <ion-col size="8">
+          <h1 big-headingDos>Menu</h1>
+           </ion-col>
+        <ion-col size="2">
+      
+          <h1 big-heading>
+            
+            <ion-icon (click)="logout ()"  style="font-size: 40px; color: rebeccapurple;margin-top: 0;" name="log-out"></ion-icon>
+          </h1>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-header>
+
+<ion-content>
+  <div linespace></div>
+  <ion-button expand="block" routerLink="/all-incidencias" >All incidencias</ion-button>
+    <ion-grid class="styleGridCarMenu">
+      <ion-row>
+        <ion-col col-6>
+          <ion-card text-center padding color="danger" routerLink='/nueva-incidencia'>
+            <ion-icon class="iconstyleCard" name="build"></ion-icon>
+            <h2>Nueva incidencia </h2>
+  
+          </ion-card>
+        </ion-col>
+        <ion-col col-6>
+          <ion-card text-center padding style="background-color: #6666ff; color: white;" routerLink='/puesto-trabajo'>
+            <ion-icon class="iconstyleCard" name="people"></ion-icon>
+            <h2>Puestos de trabajo</h2>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <ion-card text-center padding style="background-color: #009933; color: white;" routerLink='/eventos'>
+            <ion-icon class="iconstyleCard" name="calendar"></ion-icon>
+            <h2>Eventos</h2>
+          </ion-card>
+        </ion-col>
+        <ion-col col-6>
+          <ion-card text-center padding style="background-color: #cccc00; color: white;" routerLink='/noticias'>
+            <ion-icon class="iconstyleCard" name="list"></ion-icon>
+            <h2>Noticias</h2>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+</ion-content>

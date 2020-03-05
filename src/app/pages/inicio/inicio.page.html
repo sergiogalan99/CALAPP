@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p style="background-color: yellow;">
+    <ion-item *ngFor="let incidencia of (incidencias | async)">
+      
+      <ion-label style="background-color: red;">
+        <h2 style="color: green;">Descripcion: {{incidencia.descripcion}}</h2>
+        <h2 style="color: green;">Nombre: {{incidencia.nombreTipologia}}</h2>
+        <h2 style="color: green;">Fecha: {{incidencia.fecha}}</h2>
+      </ion-label>
+     
+    </ion-item>
+  </p>
+ <ion-button expand="block" (click)="logout()">Cerrar sesión</ion-button>
+</ion-content>

@@ -1,0 +1,40 @@
+
+<ion-header no-border>
+    <div class="login-header ion-padding">
+      <div linespace></div>
+      <img class="logo-img" src="assets/img/calamonte.png"/>
+      <div linespace></div>
+      <ion-label>
+        CALAPP es una plataforma que incluye una serie de servicios para mejorar la gestión municipal y la resolución de incidencias en la vía pública.
+      </ion-label>
+   </div>
+  
+  </ion-header>
+  
+  <ion-content>
+    <div linespace></div>
+  <div class="center">
+    <div heading-colum-lr>
+      <h1 big-heading>Login</h1>
+    </div>
+   
+    <ion-item transparent>
+        <img icon-small src="assets/img/username.png"/>
+        <ion-input [(ngModel)]="email" placeholder="Email" type="text"></ion-input>
+    </ion-item>
+    <ion-item transparent>
+      <img icon-small src="assets/img/password.png"/>
+      <ion-input [(ngModel)]="password" placeholder="Contraseña" type="password"></ion-input>
+  </ion-item>
+
+  <ion-label class="labelStyle" style="color:red;">{{ res }}</ion-label>
+  <ion-label class="labelStyle">
+    ¿Eres nuevo en CALAPP? <a routerLink='/register' style="color:orangered">Registrarse ahora</a>
+  </ion-label>
+
+  
+  <ion-button style="margin-left: 15px; margin-right: 15px;" color="success" class="ion-button-class" shape="round" fill="solid" size="large" expand="block" (click)="login()">Iniciar sesión</ion-button>
+  </div>
+ 
+  </ion-content>
+

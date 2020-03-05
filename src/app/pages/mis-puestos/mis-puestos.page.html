@@ -1,0 +1,83 @@
+<ion-header no-border>
+
+  <div class="login-header ion-padding">
+
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" style="text-align: left;">
+          <h1 big-headingTres>
+            <ion-buttons slot="start">
+              <ion-back-button slot="end" defaultHref="puesto-trabajo"></ion-back-button>
+              
+            </ion-buttons>
+          
+          </h1>
+        </ion-col>
+        <ion-col size="8">
+          <h1 big-headingDos>Mis puesto de <br> trabajo</h1>
+           </ion-col>
+        <ion-col size="2">
+      
+          <h1 big-heading>
+          </h1>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-header>
+
+<ion-content>
+  <ion-card style="background-color: black;color: white;" *ngFor="let puesto of puestos">
+    <ion-card-header>
+      <ion-icon style="font-size: 26px;" (click)="delete(puesto.id)" name="trash"></ion-icon>
+      <!-- <ion-icon style="font-size: 26px;" (click)="update()" name="brush"></ion-icon> -->
+      <ion-card-subtitle style="color: rgb(170, 146, 84);font-size: 20px;text-align: center;" >  <ion-icon slot="start" name="call"></ion-icon> {{puesto.data.telefono}}</ion-card-subtitle>
+      <ion-card-title style="color: white;text-align: center;">{{puesto.data.profesion}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="background-color: rgb(170, 146, 84);">
+
+      <ion-list>
+        <ion-item>
+         
+          
+       
+        <ion-label style="text-align: center;" >
+          <ion-icon slot="start" name="wallet"></ion-icon>
+          <p> {{puesto.data.salario}}</p>
+        </ion-label>
+     
+       
+        <ion-label style="text-align: center;" >
+          <ion-icon slot="start" name="people"></ion-icon>
+          <p> {{puesto.data.trabajadores}}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+         
+        <ion-icon slot="start" name="mail"></ion-icon>
+     
+      <ion-label>
+        
+        <p> {{puesto.data.email}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+         
+      <ion-icon slot="start" name="apps"></ion-icon>
+      <ion-label>
+    <ion-textarea style="margin-top: 10px;">
+    
+        <p>{{puesto.data.caracteristicas}}</p>
+
+     
+    </ion-textarea>
+  </ion-label>
+  </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

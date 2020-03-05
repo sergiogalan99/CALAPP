@@ -1,0 +1,71 @@
+<ion-header no-border>
+  
+  <div class="login-header ion-padding">
+    
+      
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" style="text-align: left;">
+          <h1 big-headingTres>
+            <ion-buttons slot="start">
+              <ion-back-button slot="end" defaultHref="menu"></ion-back-button>
+            </ion-buttons>
+          </h1>
+        </ion-col>
+        <ion-col size="8">
+          <h1 big-headingDos>Crear puesto</h1>
+          
+        </ion-col>
+        <ion-col size="2">
+      
+          <h1 big-heading>
+            
+            <ion-icon (click)="enviarPuesto()"  style="font-size: 40px; color: rebeccapurple;margin-top: 0;" name="checkmark-circle-outline"></ion-icon>
+          </h1>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="build"></ion-icon> Profesion</ion-label>
+      <ion-input [(ngModel)]="profesion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="apps"></ion-icon> Caracteristicas</ion-label>
+      <ion-input [(ngModel)]="caracteristicas"></ion-input>
+    </ion-item>
+
+    <ion-item>
+     
+      <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="wallet"></ion-icon> Salario</ion-label>
+      <ion-input [(ngModel)]="salario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+     
+      <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="podium"></ion-icon> Email</ion-label>
+      <ion-input [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+     
+      <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="call"></ion-icon> Telefono</ion-label>
+      <ion-input [(ngModel)]="telefono"></ion-input>
+    </ion-item>
+
+    <ion-item>
+     
+      <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="people"></ion-icon>Trabajadores a contratar</ion-label>
+      <ion-input [(ngModel)]="trabajadores"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <ion-label class="labelStyle" style="color:red;">{{ res }}</ion-label>
+</ion-content>
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AutenticacionService } from '../../services/autenticacion.service';
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -15,11 +16,16 @@ export class MenuPage {
   status = '';
   res: string;
 
-  constructor(private autenticacion: AutenticacionService, private routesv: Router) { }
+  constructor(private autenticacion: AutenticacionService,
+              private routesv: Router,
+              private loadingCtrl: LoadingController) { }
 
 
    async logout() {
-     return await this.autenticacion.logout().then(data => {
+    const loading = await this.loadingCtrl.create();
+    loading.present();
+     this.autenticacion.logout().then(data => {
+        loading.dismiss();
        this.routesv.navigateByUrl('/home');
      }).catch(data => {
        this.res = 'Error al cerrar sesión';

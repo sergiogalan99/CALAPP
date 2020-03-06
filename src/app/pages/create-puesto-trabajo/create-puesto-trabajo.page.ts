@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PuestoTrabajoService } from 'src/app/services/puesto-trabajo.service';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-puesto-trabajo',
@@ -18,13 +19,17 @@ export class CreatePuestoTrabajoPage implements OnInit {
   telefono;
   trabajadores;
 
-  constructor(public router: Router, private puestosService: PuestoTrabajoService, private autentication: AutenticacionService) {
+  constructor(public router: Router, 
+              private puestosService: PuestoTrabajoService,
+              private autentication: AutenticacionService,
+              private loadingCtrl: LoadingController) {
 
   }
 
   ngOnInit() {
   }
-  enviarPuesto() {
+  async enviarPuesto() {
+  
     const puesto: Puestotrabajo = new Puestotrabajo(
       this.autentication.getCurrentUserUid(),
       this.profesion,
@@ -34,8 +39,10 @@ export class CreatePuestoTrabajoPage implements OnInit {
       this.telefono,
       this.trabajadores,
     );
-
+    const loading = await this.loadingCtrl.create();
+    loading.present();
     this.puestosService.add(puesto).then(data => {
+      loading.dismiss();
       this.router.navigateByUrl('/puesto-trabajo');
     }).catch(data => {
       this.res = 'Error al guardar puesto';

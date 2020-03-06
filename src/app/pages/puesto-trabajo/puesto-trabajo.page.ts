@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-puesto-trabajo',
@@ -13,7 +14,8 @@ import { AutenticacionService } from 'src/app/services/autenticacion.service';
 export class PuestoTrabajoPage {
   private puestos: Array<any>;
 
-  constructor(private puestoService: PuestoTrabajoService) {
+  constructor(private puestoService: PuestoTrabajoService,
+              private loadingCtrl: LoadingController) {
   }
 
   ionViewDidEnter() {
@@ -21,10 +23,13 @@ export class PuestoTrabajoPage {
     this.getAll();
   }
 
-  getAll() {
+  async getAll() {
+    const loading = await this.loadingCtrl.create();
+    loading.present();
     this.puestoService.getAll().subscribe(querySnapshot => {
       querySnapshot.forEach(doc => {
         console.log(doc.id, ' => ', doc.data());
+        loading.dismiss();
         this.puestos.push(doc.data());
       });
     });

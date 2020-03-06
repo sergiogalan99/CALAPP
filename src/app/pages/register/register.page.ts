@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -23,18 +24,21 @@ export class RegisterPage {
   constructor(
     private auth: AutenticacionService,
     private routesv: Router,
+    private loadingCtrl: LoadingController,
   ) {
 
   }
 
-  signUp() {
+  async signUp() {
 
     if (this.password == this.passwordConf) {
-      this.auth.signUp(this.email, this.password)
-        .then(
-          () => this.routesv.navigateByUrl('/menu'),
-          error => this.loginError = error.message
-        );
+      const loading = await this.loadingCtrl.create();
+      loading.present();
+      this.auth.signUp(this.email, this.password).then(()=>{
+        loading.dismiss();
+       this.routesv.navigateByUrl('/menu');
+      }), error => this.loginError = error.message;
+        
     }else{
       this.res = 'Las contraseñas no coinciden';
     }

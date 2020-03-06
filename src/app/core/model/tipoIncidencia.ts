@@ -1,23 +1,21 @@
+import { Localizacion } from './Localizacion';
 export class TipoIncidencia {
 
      private _idUser: string;
      private _nombreTipologia: string;
      private _fecha: string;
-     private _img: string;
      private _localizacion: string;
      private _descripcion: string;
 
 
-	constructor(idUser: string, nombreTipologia: string, fecha: string, img: string, localizacion: string, descripcion: string) {
-		this._idUser = idUser;
-		
-		this._nombreTipologia = nombreTipologia;
-		this._fecha = fecha;
-		this._img = img;
-		this._localizacion = localizacion;
-		this._descripcion = descripcion;
-	}
 
+     constructor(idUser: string, nombreTipologia: string, fecha: string, localizacion: string, descripcion: string) {
+          this._idUser = idUser;
+          this._nombreTipologia = nombreTipologia;
+          this._fecha = fecha;
+          this._localizacion = localizacion;
+          this._descripcion = descripcion;
+     }
 
     /**
      * Getter idUser
@@ -26,8 +24,6 @@ export class TipoIncidencia {
 	public get idUser(): string {
 		return this._idUser;
 	}
-
-    /**
 
     /**
      * Getter nombreTipologia
@@ -43,14 +39,6 @@ export class TipoIncidencia {
      */
 	public get fecha(): string {
 		return this._fecha;
-	}
-
-    /**
-     * Getter img
-     * @return {string}
-     */
-	public get img(): string {
-		return this._img;
 	}
 
     /**
@@ -77,7 +65,6 @@ export class TipoIncidencia {
 		this._idUser = value;
 	}
 
-
     /**
      * Setter nombreTipologia
      * @param {string} value
@@ -94,13 +81,7 @@ export class TipoIncidencia {
 		this._fecha = value;
 	}
 
-    /**
-     * Setter img
-     * @param {string} value
-     */
-	public set img(value: string) {
-		this._img = value;
-	}
+  
 
     /**
      * Setter localizacion
@@ -117,8 +98,6 @@ export class TipoIncidencia {
 	public set descripcion(value: string) {
 		this._descripcion = value;
 	}
-
- 
-     
+	
 
 }

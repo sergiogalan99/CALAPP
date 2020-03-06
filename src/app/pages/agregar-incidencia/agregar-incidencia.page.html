@@ -26,6 +26,9 @@
 <ion-content>
 
  <ion-content>
+
+ 
+
   <ion-list>
     <ion-item>
      
@@ -66,18 +69,8 @@
 
 
 
-    
-    <ion-item>
-     
-      <ion-icon slot="start" name="compass"></ion-icon>
-   
-    <ion-label>
-      <h3 style="color:orangered">Localizacion</h3>
-    
-        <p placeholder="Introduce la direccion"></p>
-  
-    </ion-label>
-  </ion-item>
+
+ 
 
 
   <ion-item>
@@ -94,8 +87,22 @@
 </ion-item>
 
 
+    
+<ion-item style="height: 60%;">
+     
+  <ion-icon slot="start" name="compass"></ion-icon>
 
+<ion-label>
+  <h3 style="color:orangered">Localizacion</h3>
+   
+
+</ion-label>
+
+
+</ion-item>
   </ion-list>
+
+  <div id="map"></div>
   <ion-button style="margin-left: 15px; margin-right: 15px;" color="success" class="ion-button-class" shape="round" fill="solid" size="large" expand="block" (click)="enviarIncidencia()">Enviar</ion-button>
   <ion-label class="labelStyle" style="color:red;">{{ res }}</ion-label>
 </ion-content>

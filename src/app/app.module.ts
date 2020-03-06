@@ -17,6 +17,7 @@ import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
 import { AutenticacionService } from './services/autenticacion.service';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: Camera, useClass: Camera },
     AutenticacionService,

@@ -14,10 +14,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AutenticacionService } from './services/autenticacion.service';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     AutenticacionService,
     AngularFireAuthModule,
     AngularFireAuth,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireStorage
   ],
   bootstrap: [AppComponent]
 })

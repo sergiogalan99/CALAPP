@@ -27,9 +27,15 @@ export class HomePage{
     const loading = await this.loadingCtrl.create();
     loading.present();
     this.auth.login(this.email, this.password).then(() => {
+      this.auth.searchAdmin(this.auth.getCurrentUserUid()).subscribe(data => {
+        if (data.empty) {
+          this.routesv.navigateByUrl('/menu');
+        } else {
+          this.routesv.navigateByUrl('/all-incidencias');
+        }
+      });
       loading.dismiss();
-      this.routesv.navigateByUrl('/menu');
-    }), error => this.loginError = error.message
+    });
 
   }
 

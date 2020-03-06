@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AutenticacionService } from './autenticacion.service';
 import { AngularFirestore} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 @Injectable({
@@ -12,7 +13,8 @@ import { Observable } from 'rxjs';
 export class IncidenciaService {
  
   constructor(private autentication: AutenticacionService,
-              private db: AngularFirestore) {}
+              private db: AngularFirestore,
+              private storage: AngularFireStorage) {}
 
   add(incidencia: TipoIncidencia): Promise<any> {
     return this.db.collection('incidencias').add({
@@ -27,8 +29,12 @@ export class IncidenciaService {
     return this.db.collection('incidencias').get();
   }
 
-  imageAdd() {
+  getImage(imageName: string) {
+    const storage = this.storage.storage;
 
+    const storageRef = storage.ref('incidencias/' + imageName);
+
+    return storageRef.getDownloadURL();
   }
 
 

@@ -1,4 +1,4 @@
-import { Tipologia } from './../../core/model/tipologia';
+import { Tipologia } from '../../core/model/Tipologia';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 
@@ -10,19 +10,17 @@ import { NavigationExtras, Router } from '@angular/router';
 export class NuevaIncidenciaPage {
   private arrayTipologia: string[] = [];
   constructor(public router: Router) {
-    for (let index = 0; index < Object.keys(Tipologia).length / 2; index++) {
-      this.arrayTipologia.push(Tipologia[index].toString());
-    }
+
+    Object.keys(Tipologia).forEach(key => this.arrayTipologia.push(Tipologia[key]));
+    this.arrayTipologia.pop();
   }
 
-
-
   public tipologiaSeleccionada(itemSeleccionado) {
-    let navigationExtras: NavigationExtras = {
+    const navigationExtras: NavigationExtras = {
       state: {
         itemSeleccionado: itemSeleccionado
       }
-    }
+    };
     this.router.navigate(['agregar-incidencia'], navigationExtras);
   }
 

@@ -26,6 +26,7 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of arrayTipologia" (click)="tipologiaSeleccionada(item)">
+      <img class="logo-img" [src]="item.image"/>
       <ion-label>{{item}}</ion-label>
     </ion-item>
   </ion-list>

@@ -16,6 +16,11 @@
           <h1 big-headingDos>Incidencias</h1>
         </ion-col>
         <ion-col size="2">
+      
+          <h1 big-heading>
+            
+            <ion-icon (click)="logout ()"  style="font-size: 40px; color: rebeccapurple;margin-top: 0;" name="log-out"></ion-icon>
+          </h1>
           </ion-col>
       </ion-row>
     </ion-grid>
@@ -28,20 +33,20 @@
 
 
   <ion-card style="background-color: black;color:white" *ngFor="let incidencia of incidencias">
-    <img class="logo-img" src="assets/img/1.png"/>
+    <img class="logo-img" [src]="incidencia.image"/>
     <ion-card-header class="cardIncidencias" >
-      <ion-card-subtitle class="cardIncidencias" > <ion-icon style = "margin-right: 10px; font-size: 15px;"name="calendar"></ion-icon>{{incidencia.fecha}}</ion-card-subtitle>
-      <ion-card-title style="color: brown;" class="cardIncidencias" >{{incidencia.nombreTipologia}}</ion-card-title>
+      <ion-card-subtitle class="cardIncidencias" > <ion-icon style = "margin-right: 10px; font-size: 15px;"name="calendar"></ion-icon>{{incidencia.data.fecha}}</ion-card-subtitle>
+      <ion-card-title style="color: brown;" class="cardIncidencias" >{{incidencia.data.nombreTipologia}}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="cardIncidencias" >
-      {{incidencia.descripcion}}
+      {{incidencia.data.descripcion}}
      
      
     
     </ion-card-content>
     <ion-footer class="cardIncidencias" >
       <ion-icon style = "margin-right: 10px; font-size: 15px;" name="map"></ion-icon>
-      {{incidencia.localizacion}}
+      {{incidencia.data.localizacion}}
 
     </ion-footer>
 

@@ -36,37 +36,13 @@ export class CreatePuestoTrabajoPage implements OnInit {
 
   ngOnInit() {
   }
-  async enviarPuesto() {
-
-    const puesto: Puestotrabajo = new Puestotrabajo(
-      this.autentication.getCurrentUserUid(),
-      this.profesion,
-      this.caracteristicas,
-      this.salario,
-      this.email,
-      this.telefono,
-      this.trabajadores,
-    );
-   
-    if (this.respuesta == true) {
-      const loading = await this.loadingCtrl.create();
-      loading.present();
-      this.puestosService.add(puesto).then(data => {
-        loading.dismiss();
-        this.router.navigateByUrl('/puesto-trabajo');
-      }).catch(data => {
-        this.res = 'Error al guardar puesto';
-      });
-    } else {
-      alert('error');
-    }
-  }
+  
 
    private crearGrupoControl() {
     this.grupoControl = new FormGroup({
       regexTrabajadores: new FormControl(
         Validators.required,
-        Validators.compose([ Validators.pattern('^[0-9]*$')]),
+        Validators.compose([Validators.pattern('^[0-9]*$')]),
       ),
       regexSalario: new FormControl(
         Validators.required,
@@ -84,6 +60,32 @@ export class CreatePuestoTrabajoPage implements OnInit {
         Validators.required,
         Validators.compose([Validators.pattern('^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$')])),
     });
+  }
+
+  async enviarPuesto() {
+
+    const puesto: Puestotrabajo = new Puestotrabajo(
+      this.autentication.getCurrentUserUid(),
+      this.profesion,
+      this.caracteristicas,
+      this.salario,
+      this.email,
+      this.telefono,
+      this.trabajadores,
+    );
+   
+    if (this.grupoControl.valid) {
+      const loading = await this.loadingCtrl.create();
+      loading.present();
+      this.puestosService.add(puesto).then(data => {
+        loading.dismiss();
+        this.router.navigateByUrl('/puesto-trabajo');
+      }).catch(data => {
+        this.res = 'Error al guardar puesto';
+      });
+     } else {
+      this.res = 'Campos incompletos';
+     }
   }
 }
 

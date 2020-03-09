@@ -11,7 +11,7 @@
     <div linespace></div>
   <div class="center">
     <div heading-colum-lr>
-      <h1 big-heading>Register</h1>
+      <h1 big-heading>Registro</h1>
     </div>
    
     <ion-item transparent>
@@ -29,15 +29,18 @@
       <ion-input type="{{type}}" name="passwordConf" [(ngModel)]="passwordConf" placeholder="Confirmar Contraseña">
       </ion-input>
       <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> 
-         <ion-icon name="eye" style="font-size:25px;"></ion-icon>
+         <ion-icon name="eye-off" style="font-size:25px;"></ion-icon>
       </button>
       <button *ngIf="showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> 
-         <ion-icon name="eye-off" style="font-size:25px;"></ion-icon>
+         <ion-icon name="eye" style="font-size:25px;"></ion-icon>
       </button>
     </ion-item>
 
   <ion-label class="labelStyle" style="color:red;">{{ res }}</ion-label>
-    
+  <ion-label class="labelStyle">
+    ¿Ya tienes cuenta? <a routerLink='/home' style="color:orangered">Iniciar sesión</a>
+  </ion-label>
+
   <ion-button style="margin-left: 15px; margin-right: 15px;" color="success" class="ion-button-class" shape="round" fill="solid" size="large" expand="block" (click)="signUp()">Registrarse</ion-button>
   </div>
  

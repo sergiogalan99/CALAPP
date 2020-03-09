@@ -42,27 +42,27 @@ export class CreatePuestoTrabajoPage implements OnInit {
     this.grupoControl = new FormGroup({
       regexTrabajadores: new FormControl(
         Validators.required,
-        Validators.compose([Validators.pattern('^[0-9]*$')]),
+        Validators.compose([ Validators.required, Validators.pattern('^[0-9]*$')]),
       ),
       regexSalario: new FormControl(
         Validators.required,
-        Validators.compose([ Validators.pattern('^[0-9]*$')])
+        Validators.compose([ Validators.required, Validators.pattern('^[0-9]*$')])
       ),
       regexProfesion: new FormControl(
         Validators.required,
-        Validators.compose([Validators.pattern('^[a-zA-Z]*$')])
+        Validators.compose([ Validators.required, Validators.pattern('^[a-zA-Z]*$')])
       ),
       regexCaracteristicas: new FormControl(
         Validators.required,
-        Validators.compose([Validators.minLength(5)])
+        Validators.compose([ Validators.required, Validators.minLength(5)])
       ),
       regexTelefono: new FormControl(
         Validators.required,
-        Validators.compose([Validators.pattern('^[6|7|8|9][0-9]{8}$')])
+        Validators.compose([ Validators.required, Validators.pattern('^[6|7|8|9][0-9]{8}$')])
       ),
       regexCorreo: new FormControl(
         Validators.required,
-        Validators.compose([Validators.pattern('^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$')])),
+        Validators.compose([ Validators.required, Validators.pattern('^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$')])),
     });
   }
 

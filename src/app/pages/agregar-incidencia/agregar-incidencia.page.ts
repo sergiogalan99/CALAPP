@@ -59,6 +59,26 @@ export class AgregarIncidenciaPage implements OnInit {
       });
 
   }
+  getGalery(){
+    const optionsGalery: CameraOptions = {
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE,
+      targetWidth: 600,
+      targetHeight: 600,
+      quality: 100
+    };
+    this.camera.getPicture(optionsGalery)
+      .then(imageData => {
+        console.log(imageData);
+        this.image = `data:image/jpeg;base64,${imageData}`;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+  }
 
   addImage(imageName: string) {
     return firebase.storage().ref().child('incidencias').child(imageName).putString(this.image, 'data_url');

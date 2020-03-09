@@ -40,13 +40,16 @@
        </h4>
     </ion-item>
 </form>
-
+<form [formGroup]="grupoControl">
     <ion-item>
       <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="apps"></ion-icon> Caracteristicas</ion-label>
-      <ion-input [(ngModel)]="caracteristicas"></ion-input>
+      <ion-input formControlName="regexCaracteristicas" [(ngModel)]="caracteristicas"></ion-input>
       <br>
+      <h4 style="color:red;margin-left: 15px;font-size: 10px;" *ngIf="grupoControl.get('regexCaracteristicas').errors">
+        Introduce caracteristicas por favor (min.5 caracteres)
+       </h4>
     </ion-item>
-
+</form>
     <form [formGroup]="grupoControl">
     <ion-item>
       <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="wallet"></ion-icon> Salario (€/mes)</ion-label>

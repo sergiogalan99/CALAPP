@@ -52,6 +52,10 @@ export class CreatePuestoTrabajoPage implements OnInit {
         Validators.required,
         Validators.compose([Validators.pattern('^[a-zA-Z]*$')])
       ),
+      regexCaracteristicas: new FormControl(
+        Validators.required,
+        Validators.compose([Validators.minLength(5)])
+      ),
       regexTelefono: new FormControl(
         Validators.required,
         Validators.compose([Validators.pattern('^[6|7|8|9][0-9]{8}$')])
@@ -81,7 +85,7 @@ export class CreatePuestoTrabajoPage implements OnInit {
         loading.dismiss();
         this.router.navigateByUrl('/puesto-trabajo');
       }).catch(data => {
-        this.res = 'Error al guardar puesto';
+        this.res = 'Error al guardar puesto de trabajo';
       });
      } else {
       this.res = 'Campos incompletos';

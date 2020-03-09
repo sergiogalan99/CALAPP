@@ -15,7 +15,7 @@
           </h1>
         </ion-col>
         <ion-col size="8">
-          <h1 big-headingDos>Mis puesto de <br> trabajo</h1>
+          <h1 big-headingDos>Mis ofertas de <br> trabajo</h1>
            </ion-col>
         <ion-col size="2">
       
@@ -32,7 +32,7 @@
 <ion-content>
   <ion-card style="background-color: black;color: white;" *ngFor="let puesto of puestos">
     <ion-card-header>
-      <ion-icon style="font-size: 26px;" (click)="delete(puesto.id)" name="trash"></ion-icon>
+      <ion-icon style="font-size: 26px; color: brown;" (click)="delete(puesto.id)" name="trash"></ion-icon>
       <!-- <ion-icon style="font-size: 26px;" (click)="update()" name="brush"></ion-icon> -->
       <ion-card-subtitle style="color: rgb(170, 146, 84);font-size: 20px;text-align: center;" >  <ion-icon slot="start" name="call"></ion-icon> {{puesto.data.telefono}}</ion-card-subtitle>
       <ion-card-title style="color: white;text-align: center;">{{puesto.data.profesion}}</ion-card-title>
@@ -46,13 +46,13 @@
        
         <ion-label style="text-align: center;" >
           <ion-icon slot="start" name="wallet"></ion-icon>
-          <p> {{puesto.data.salario}}</p>
+          <p> {{puesto.data.salario}} €/mes</p>
         </ion-label>
      
        
         <ion-label style="text-align: center;" >
           <ion-icon slot="start" name="people"></ion-icon>
-          <p> {{puesto.data.trabajadores}}</p>
+          <p> {{puesto.data.trabajadores}} empleados</p>
         </ion-label>
       </ion-item>
 
@@ -71,7 +71,7 @@
       <ion-label>
     <ion-textarea style="margin-top: 10px;">
     
-        <p>{{puesto.data.caracteristicas}}</p>
+        <p>Caracteristicas: <br> {{puesto.data.caracteristicas}}</p>
 
      
     </ion-textarea>

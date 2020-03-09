@@ -15,8 +15,8 @@
           </h1>
         </ion-col>
         <ion-col size="8">
-          <h1 big-headingDos>Puesto de trabajo</h1>
-          <ion-button color="secondary" routerLink="/mis-puestos"  expand="block">   <ion-icon slot="start" name="brush"></ion-icon> Mis puestos de trabajo</ion-button>
+          <h1 big-headingDos>Oferta de trabajo</h1>
+          <ion-button expand="full" fill="outline" routerLink="/mis-puestos" color="danger">   <ion-icon slot="start" name="brush"></ion-icon> Mis ofertas</ion-button>
         </ion-col>
         <ion-col size="2">
       
@@ -46,13 +46,13 @@
        
         <ion-label style="text-align: center;" >
           <ion-icon slot="start" name="wallet"></ion-icon>
-          <p> {{puesto.salario}}</p>
+          <p> {{puesto.salario}} €/mes</p>
         </ion-label>
      
        
         <ion-label style="text-align: center;" >
           <ion-icon slot="start" name="people"></ion-icon>
-          <p> {{puesto.trabajadores}}</p>
+          <p> {{puesto.trabajadores}} empleados</p>
         </ion-label>
       </ion-item>
 
@@ -71,7 +71,7 @@
       <ion-label>
     <ion-textarea style="margin-top: 10px;">
     
-        <p>{{puesto.caracteristicas}}</p>
+        <p>Caracteristicas: <br> {{puesto.caracteristicas}}</p>
 
      
     </ion-textarea>

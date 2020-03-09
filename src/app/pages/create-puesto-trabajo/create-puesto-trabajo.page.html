@@ -30,12 +30,16 @@
 
 <ion-content>
   <ion-list>
-
+    <form [formGroup]="grupoControl">
     <ion-item>
       <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="build"></ion-icon> Profesion</ion-label>
-      <ion-input [(ngModel)]="profesion"></ion-input>
+      <ion-input  formControlName="regexProfesion"  [(ngModel)]="profesion"></ion-input>
       <br>
+      <h4 style="color:red;margin-left: 15px;font-size: 10px;" *ngIf="grupoControl.get('regexProfesion').errors">
+        No válido. (Ejemplo: Profesor)
+       </h4>
     </ion-item>
+</form>
 
     <ion-item>
       <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="apps"></ion-icon> Caracteristicas</ion-label>
@@ -43,39 +47,58 @@
       <br>
     </ion-item>
 
+    <form [formGroup]="grupoControl">
     <ion-item>
-     
-      <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="wallet"></ion-icon> Salario</ion-label>
-      <ion-input [(ngModel)]="salario"></ion-input>
+      <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="wallet"></ion-icon> Salario (€/mes)</ion-label>
+      <ion-input formControlName="regexSalario" [(ngModel)]="salario"></ion-input>
       <br>
+      <h4 style="color:red;margin-left: 15px;font-size: 10px;" *ngIf="grupoControl.get('regexSalario').errors">
+        No válido. Introduce digitos numéricos 
+       </h4>
     </ion-item>
+  </form>
 
+    <form [formGroup]="grupoControl">
     <ion-item>
-     
       <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="podium"></ion-icon> Email</ion-label>
-      <ion-input [(ngModel)]="email"></ion-input>
+      <ion-input formControlName="regexCorreo"  [(ngModel)]="email"></ion-input>
       <br>
+      <h4 style="color:red;margin-left: 15px;font-size: 10px;" *ngIf="grupoControl.get('regexCorreo').errors">
+        No válido. (Ejemplo: calamonte@gmail.com)
+       </h4>
     </ion-item>
+    </form>
 
+
+    <form [formGroup]="grupoControl">
     <ion-item >
-     
       <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="call"></ion-icon> Telefono</ion-label>
-      <ion-input  [(ngModel)]="telefono"></ion-input>
+      <ion-input  formControlName="regexTelefono" [(ngModel)]="telefono"></ion-input>
       <br>
+      <h4 style="color:red;margin-left: 15px;font-size: 10px;" *ngIf="grupoControl.get('regexTelefono').errors">
+        No válido. Introduce 9 digitos numéricos
+       </h4>
     </ion-item>
+    </form>
 
+    <form [formGroup]="grupoControl">
     <ion-item>
-     
       <ion-label position="floating">  <ion-icon class="iconPuesto" slot="start" name="people"></ion-icon>Trabajadores a contratar</ion-label>
-      <ion-input [(ngModel)]="trabajadores"></ion-input>
+      <ion-input formControlName="regexTrabajadores" [(ngModel)]="trabajadores"></ion-input>
       <br>
+      <h4 style="color:red;margin-left: 15px;font-size: 10px;" *ngIf="grupoControl.get('regexTrabajadores').errors">
+       No válido. Introduce digitos numéricos
+      </h4>
     </ion-item>
-
+    </form>
 
 
   </ion-list>
 
+ 
 
   <ion-label class="labelStyle" style="color:red;">{{ res }}</ion-label>
+
+ 
 </ion-content>
 

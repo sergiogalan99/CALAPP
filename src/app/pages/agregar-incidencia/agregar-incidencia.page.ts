@@ -64,7 +64,6 @@ export class AgregarIncidenciaPage implements OnInit {
     return firebase.storage().ref().child('incidencias').child(imageName).putString(this.image, 'data_url');
   }
 
-
   async enviarIncidencia() {
 
     const incidencia: TipoIncidencia = new TipoIncidencia(

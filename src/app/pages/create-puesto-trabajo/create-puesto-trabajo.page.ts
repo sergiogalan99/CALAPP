@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PuestoTrabajoService } from 'src/app/services/puesto-trabajo.service';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { LoadingController } from '@ionic/angular';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./create-puesto-trabajo.page.scss'],
 })
 export class CreatePuestoTrabajoPage implements OnInit {
-  
+
   res;
   profesion;
   caracteristicas;
@@ -20,21 +21,23 @@ export class CreatePuestoTrabajoPage implements OnInit {
   email;
   telefono;
   trabajadores;
-
-  constructor(public router: Router, 
+  name: string;
+  grupoControl: FormGroup;
+  respuesta: boolean = false;
+  constructor(public router: Router,
               private puestosService: PuestoTrabajoService,
               private autentication: AutenticacionService,
               private loadingCtrl: LoadingController,
-             ) {
+  ) {
 
+    this.crearGrupoControl();
 
-               
   }
 
   ngOnInit() {
   }
   async enviarPuesto() {
-  
+
     const puesto: Puestotrabajo = new Puestotrabajo(
       this.autentication.getCurrentUserUid(),
       this.profesion,
@@ -44,14 +47,43 @@ export class CreatePuestoTrabajoPage implements OnInit {
       this.telefono,
       this.trabajadores,
     );
-    const loading = await this.loadingCtrl.create();
-    loading.present();
-    this.puestosService.add(puesto).then(data => {
-      loading.dismiss();
-      this.router.navigateByUrl('/puesto-trabajo');
-    }).catch(data => {
-      this.res = 'Error al guardar puesto';
-    });
+   
+    if (this.respuesta == true) {
+      const loading = await this.loadingCtrl.create();
+      loading.present();
+      this.puestosService.add(puesto).then(data => {
+        loading.dismiss();
+        this.router.navigateByUrl('/puesto-trabajo');
+      }).catch(data => {
+        this.res = 'Error al guardar puesto';
+      });
+    } else {
+      alert('error');
+    }
+  }
 
+   private crearGrupoControl() {
+    this.grupoControl = new FormGroup({
+      regexTrabajadores: new FormControl(
+        Validators.required,
+        Validators.compose([ Validators.pattern('^[0-9]*$')]),
+      ),
+      regexSalario: new FormControl(
+        Validators.required,
+        Validators.compose([ Validators.pattern('^[0-9]*$')])
+      ),
+      regexProfesion: new FormControl(
+        Validators.required,
+        Validators.compose([Validators.pattern('^[a-zA-Z]*$')])
+      ),
+      regexTelefono: new FormControl(
+        Validators.required,
+        Validators.compose([Validators.pattern('^[6|7|8|9][0-9]{8}$')])
+      ),
+      regexCorreo: new FormControl(
+        Validators.required,
+        Validators.compose([Validators.pattern('^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$')])),
+    });
   }
 }
+

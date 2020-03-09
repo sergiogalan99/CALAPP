@@ -1,19 +1,18 @@
 export class Tipologia {
-    static readonly BASURAS = new Tipologia('assets/img/1.png', 'Basuras');
-    static readonly RECOGIDA_DE_MUEBLES = new Tipologia('assets/img/2.png', 'Recogida de muebles');
-    static readonly LIMPIEZA = new Tipologia('assets/img/3.png', 'Limpieza');
-    static readonly MOBILIARIO_URBANO = new Tipologia('assets/img/3.png', 'Mobiliario urbano');
-    static readonly ALCANTARILLADO = new Tipologia('assets/img/3.png', 'Alcantarillado');
-    static readonly PUNTO_DE_AGUA = new Tipologia('assets/img/3.png', 'Punto de agua');
-    static readonly ACERAS_Y_CALZADAS = new Tipologia('assets/img/3.png', 'Aceras y calzadas');
-    static readonly ALUMBRADO = new Tipologia('assets/img/3.png', 'Alumbrado');
-    static readonly SEÑALES = new Tipologia('assets/img/3.png', 'Señales');
-    static readonly PARQUES_YJARDINES = new Tipologia('assets/img/3.png', 'Parques y jardines');
-    static readonly PLAGA_DE_INSECTOS = new Tipologia('assets/img/3.png', 'Plaga de isectos');
-    static readonly RETIRADA_DE_VEHICULOS = new Tipologia('assets/img/3.png', 'Retirado de vehiculos');
-    static readonly TRANSPORTE = new Tipologia('assets/img/3.png', 'Transporte');
-    static readonly VANDALISMO = new Tipologia('assets/img/3.png', 'Vandalismo');
-    static readonly OTROS = new Tipologia('assets/img/3.png', 'Otros');
+    static readonly AGUAS_Y_VERTIDOS = new Tipologia('assets/img/tipologia/agua.png', 'Aguas y vertidos');
+    static readonly BASURAS_CONTENEDORES_LIMPIEZA = new Tipologia('assets/img/tipologia/basura.png', 'Basuras/Contenedores/Limpieza');
+    static readonly ANIMALES_VAGABUNDOS = new Tipologia('assets/img/tipologia/animales.png', 'Animales vagabundos');
+    static readonly ALUMBRADO = new Tipologia('assets/img/tipologia/alumbrado.png', 'Alumbrado');
+    static readonly PARQUES_YJARDINES = new Tipologia('assets/img/tipologia/parque.png', 'Parques y jardines');
+    static readonly MOBILIARIO_URBANO_SEÑALES = new Tipologia('assets/img/tipologia/urbano.png', 'Mobiliario urbano/Señales');
+   
+    static readonly ACERAS_Y_CALZADAS = new Tipologia('assets/img/tipologia/peaton.png', 'Infraestructuras urbanas (Aceras/calzadas/alvantarillado)');
+
+    static readonly PLAGA_DE_INSECTOS = new Tipologia('assets/img/tipologia/isecto.png', 'Plaga de isectos');
+    static readonly RETIRADA_DE_VEHICULOS = new Tipologia('assets/img/tipologia/vehiculo.png', 'Retirada de vehiculos');
+    static readonly TRANSPORTE = new Tipologia('assets/img/tipologia/transporte.png', 'Transporte');
+    static readonly VANDALISMO = new Tipologia('assets/img/tipologia/vandalismo.png', 'Vandalismo');
+    static readonly OTROS = new Tipologia('assets/img/tipologia/otros.png', 'Otros');
 
     private constructor(private readonly image: string, public readonly name: any) {
     }

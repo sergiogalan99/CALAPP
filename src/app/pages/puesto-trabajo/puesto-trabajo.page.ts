@@ -29,9 +29,9 @@ export class PuestoTrabajoPage {
     this.puestoService.getAll().subscribe(querySnapshot => {
       querySnapshot.forEach(doc => {
         console.log(doc.id, ' => ', doc.data());
-        loading.dismiss();
         this.puestos.push(doc.data());
       });
     });
+    loading.dismiss();
   }
 }

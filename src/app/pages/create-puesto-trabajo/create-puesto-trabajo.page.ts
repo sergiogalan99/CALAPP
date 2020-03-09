@@ -5,12 +5,14 @@ import { PuestoTrabajoService } from 'src/app/services/puesto-trabajo.service';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { LoadingController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-create-puesto-trabajo',
   templateUrl: './create-puesto-trabajo.page.html',
   styleUrls: ['./create-puesto-trabajo.page.scss'],
 })
 export class CreatePuestoTrabajoPage implements OnInit {
+  
   res;
   profesion;
   caracteristicas;
@@ -22,8 +24,11 @@ export class CreatePuestoTrabajoPage implements OnInit {
   constructor(public router: Router, 
               private puestosService: PuestoTrabajoService,
               private autentication: AutenticacionService,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController,
+             ) {
 
+
+               
   }
 
   ngOnInit() {

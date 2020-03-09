@@ -21,7 +21,6 @@ export class IncidenciaService {
       idUser: incidencia.idUser,
       nombreTipologia: incidencia.nombreTipologia,
       fecha: incidencia.fecha,
-      localizacion: incidencia.localizacion,
       descripcion: incidencia.descripcion,
     });
   }
@@ -36,6 +35,10 @@ export class IncidenciaService {
 
     return storageRef.getDownloadURL();
   }
+  delete(id: string): Promise<any> {
+    return this.db.collection('incidencias').doc(id).delete();
+  }
 
+  
 
 }

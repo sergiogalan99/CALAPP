@@ -4,16 +4,14 @@ export class TipoIncidencia {
      private _idUser: string;
      private _nombreTipologia: string;
      private _fecha: string;
-     private _localizacion: string;
      private _descripcion: string;
 
 
 
-     constructor(idUser: string, nombreTipologia: string, fecha: string, localizacion: string, descripcion: string) {
+     constructor(idUser: string, nombreTipologia: string, fecha: string, descripcion: string) {
           this._idUser = idUser;
           this._nombreTipologia = nombreTipologia;
           this._fecha = fecha;
-          this._localizacion = localizacion;
           this._descripcion = descripcion;
      }
 
@@ -41,13 +39,6 @@ export class TipoIncidencia {
 		return this._fecha;
 	}
 
-    /**
-     * Getter localizacion
-     * @return {string}
-     */
-	public get localizacion(): string {
-		return this._localizacion;
-	}
 
     /**
      * Getter descripcion
@@ -83,13 +74,6 @@ export class TipoIncidencia {
 
   
 
-    /**
-     * Setter localizacion
-     * @param {string} value
-     */
-	public set localizacion(value: string) {
-		this._localizacion = value;
-	}
 
     /**
      * Setter descripcion

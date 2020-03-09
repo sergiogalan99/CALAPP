@@ -17,19 +17,19 @@ declare var google;
 })
 export class AgregarIncidenciaPage implements OnInit {
 
-  mapRef = null;
+  
   image: string;
   res: string;
-  protected itemSeleccionado: string;
-  protected myDate: string = new Date().toISOString();
+  itemSeleccionado: string;
+  myDate: string = new Date().toISOString();
   img;
   localizacion;
   descripcion;
-  fecha;
-  nombretipologia;
-  geolocalizacion;
+  
 
-  constructor(private geolocation: Geolocation,
+
+
+  constructor(
               private loadingCtrl: LoadingController,
               public router: Router,
               private camera: Camera,
@@ -39,7 +39,7 @@ export class AgregarIncidenciaPage implements OnInit {
   }
 
   ngOnInit() {
-    this.loadMap();
+   
   }
 
   getPicture() {
@@ -65,60 +65,66 @@ export class AgregarIncidenciaPage implements OnInit {
   }
 
 
-  enviarIncidencia() {
-    console.log(this.geolocalizacion);
+  async enviarIncidencia() {
+
     const incidencia: TipoIncidencia = new TipoIncidencia(
       this.autenticationService.getCurrentUserUid(),
-      this.nombretipologia = this.itemSeleccionado,
-      this.fecha = this.myDate,
-      'localizacion',
+      this.itemSeleccionado,
+      this.myDate,
       this.descripcion,
     );
 
+    const loading = await this.loadingCtrl.create();
+    loading.present();
+
+
+
+
     this.incidenciaService.add(incidencia).then(data => {
       this.addImage(data.id);
+      this.loadingCtrl.dismiss();
       this.router.navigateByUrl('/menu');
-      this.autenticationService.showAlert('Incidencia registrada', 'Gracias, intentaremos solvemtarlas lo antes posible.');
+      this.autenticationService.showAlert('Incidencia registrada', 'Gracias, intentaremos solventarlas lo antes posible.');
     }).catch(data => {
       this.res = 'Error al guardar incidencia';
     });
 
   }
 
-  async loadMap() {
-    const loading = await this.loadingCtrl.create();
-    loading.present();
-    const myLatLng = await this.getLocation();
-    this.geolocalizacion = new Localizacion(myLatLng.lat, myLatLng.lng);
-    console.log('Latitud: ' + myLatLng.lat + ' Longitud: ' + myLatLng.lng);
-    const mapEle: HTMLElement = document.getElementById('map');
-    this.mapRef = new google.maps.Map(mapEle, {
-      center: myLatLng,
-      zoom: 12
-    });
-    google.maps.event
-      .addListenerOnce(this.mapRef, 'idle', () => {
-        loading.dismiss();
-        this.addMaker(myLatLng.lat, myLatLng.lng);
-      });
-  }
+  // async loadMap() {
+  //   const loading = await this.loadingCtrl.create();
+  //   loading.present();
+  //   const myLatLng = await this.getLocation();
+  //   this.geolocalizacion = new Localizacion(myLatLng.lat, myLatLng.lng);
+  //   console.log('Latitud: ' + myLatLng.lat + ' Longitud: ' + myLatLng.lng);
+  //   const mapEle: HTMLElement = document.getElementById('map');
+  //   this.mapRef = new google.maps.Map(mapEle, {
+  //     center: myLatLng,
+  //     zoom: 12
+  //   });
+  //   google.maps.event
+  //     .addListenerOnce(this.mapRef, 'idle', () => {
+  //       loading.dismiss();
+  //       this.addMaker(myLatLng.lat, myLatLng.lng);
+  //     });
+  // }
 
-  private addMaker(lat: number, lng: number) {
-    const marker = new google.maps.Marker({
-      position: { lat, lng },
-      map: this.mapRef,
-      title: 'Hello World!'
-    });
-  }
+  // private addMaker(lat: number, lng: number) {
+  //   const marker = new google.maps.Marker({
+  //     position: { lat, lng },
+  //     map: this.mapRef,
+  //     title: 'Hello World!'
+  //   });
+  // }
 
-  private async getLocation(): Promise<any> {
-    const rta = await this.geolocation.getCurrentPosition();
-    console.log(rta.coords);
-    return {
-      lat: rta.coords.latitude,
-      lng: rta.coords.longitude
-    };
-  }
+  // private async getLocation(): Promise<any> {
+  //   const rta = await this.geolocation.getCurrentPosition();
+  //   console.log(rta.coords);
+  //   return {
+  //     lat: rta.coords.latitude,
+  //     lng: rta.coords.longitude
+  //   };
+  // }
 
 
 }

@@ -19,6 +19,7 @@ res: string;
               private loadingCtrl: LoadingController,
               private autenticacion: AutenticacionService,
               private router: Router) {
+               
   }
 
   ionViewDidEnter() {
@@ -31,8 +32,8 @@ res: string;
     loading.present();
     this.incidenciaService.getAll().subscribe(querySnapshot => {
       querySnapshot.forEach(doc => {
-        console.log(doc.id, ' => ', doc.data());
-        const incidencia = doc.data();
+        //console.log(doc.id, ' => ', doc.data());
+        const incidencia = doc.data(); 
         this.incidenciaService.getImage(doc.id).then(imageURL => {
           this.incidencias.push({image: imageURL, data: incidencia});
         });
@@ -51,4 +52,14 @@ res: string;
      });
 
 }
+
+delete(id: string) {
+  console.log(id);
+  this.incidenciaService.delete(id).then(() => {
+    this.incidencias = [];
+  });
+}
+
+
+
 }

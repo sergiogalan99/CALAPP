@@ -62,7 +62,6 @@
     <h3 style="color:orangered">Foto</h3>
     <p><ion-button expand="block" (click)="getPicture()">Toma una foto</ion-button></p>
     <p><img  [src]="image" *ngIf="image" /></p>
-     <p>{{image}}</p>
   </ion-label>
   
 </ion-item>
@@ -88,21 +87,9 @@
 
 
     
-<ion-item style="height: 60%;">
-     
-  <ion-icon slot="start" name="compass"></ion-icon>
+ </ion-list>
 
-<ion-label>
-  <h3 style="color:orangered">Localizacion</h3>
-   
-
-</ion-label>
-
-
-</ion-item>
-  </ion-list>
-
-  <div id="map"></div>
+ 
   <ion-button style="margin-left: 15px; margin-right: 15px;" color="success" class="ion-button-class" shape="round" fill="solid" size="large" expand="block" (click)="enviarIncidencia()">Enviar</ion-button>
   <ion-label class="labelStyle" style="color:red;">{{ res }}</ion-label>
 </ion-content>

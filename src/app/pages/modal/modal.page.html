@@ -1,0 +1,54 @@
+
+  <div linespace></div>
+  <div linespace></div>
+<ion-content style="background-color: transparent;">
+  <ion-card  style="background-color: black;color: white;" >
+    <ion-card-header>
+      <ion-card-subtitle style="color: goldenrod;font-size: 20px;text-align: center;" >  <ion-icon slot="start" name="call"></ion-icon> {{puesto.telefono}}</ion-card-subtitle>
+      <ion-card-title style="color: white;text-align: center;">{{puesto.profesion}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="background-color: goldenrod;">
+
+      <ion-list>
+        <ion-item>
+         
+          
+       
+        <ion-label style="text-align: center;" >
+          <ion-icon slot="start" name="wallet"></ion-icon>
+          <p> {{puesto.salario}} €/mes</p>
+        </ion-label>
+     
+       
+        <ion-label style="text-align: center;" >
+          <ion-icon slot="start" name="people"></ion-icon>
+          <p> {{puesto.trabajadores}} empleados</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+         
+        <ion-icon slot="start" name="mail"></ion-icon>
+     
+      <ion-label>
+        
+        <p> {{puesto.email}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+         
+      <ion-icon slot="start" name="apps"></ion-icon>
+      <ion-label>
+    <ion-textarea style="margin-top: 10px;">
+    
+        <p>Caracteristicas: <br> {{puesto.caracteristicas}}</p>
+
+     
+    </ion-textarea>
+  </ion-label>
+  </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card> 
+  <ion-button expand="block" (click)="dismiss()">Close</ion-button>
+</ion-content>

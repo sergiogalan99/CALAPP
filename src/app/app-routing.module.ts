@@ -50,6 +50,10 @@ const routes: Routes = [
   {
     path: 'mis-puestos',
     loadChildren: () => import('./pages/mis-puestos/mis-puestos.module').then( m => m.MisPuestosPageModule)
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./pages/modal/modal.module').then( m => m.ModalPageModule)
   }
 ];
 

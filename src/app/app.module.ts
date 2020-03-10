@@ -1,3 +1,4 @@
+import { ModalImagenGrandePageModule } from './pages/modal-imagen-grande/modal-imagen-grande.module';
 
 import { HomePage } from './pages/home/home.page';
 import { Camera } from '@ionic-native/camera/ngx';
@@ -28,6 +29,7 @@ import { ModalPageModule } from './pages/modal/modal.module';
 
 
 
+
 @NgModule({
 
   declarations: [AppComponent],
@@ -38,7 +40,8 @@ import { ModalPageModule } from './pages/modal/modal.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    ModalPageModule],
+    ModalPageModule,
+    ModalImagenGrandePageModule],
   providers: [
     StatusBar,
     SplashScreen,

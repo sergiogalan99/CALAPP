@@ -24,21 +24,24 @@ export class HomePage {
 
 
   async login() {
-    const loading = await this.loadingCtrl.create();
-    loading.present();
-    this.auth.login(this.email, this.password).then(() => {
-      this.auth.searchAdmin(this.auth.getCurrentUserUid()).subscribe(data => {
-        if (data.empty) {
-          this.routesv.navigateByUrl('/menu');
-        } else {
-          this.routesv.navigateByUrl('/all-incidencias');
-        }
+    if (this.email.length > 0 && this.password.length > 0) {
+      const loading = await this.loadingCtrl.create();
+      loading.present();
+      this.auth.login(this.email, this.password).then(() => {
+        this.auth.searchAdmin(this.auth.getCurrentUserUid()).subscribe(data => {
+          if (data.empty) {
+            this.routesv.navigateByUrl('/menu');
+          } else {
+            this.routesv.navigateByUrl('/all-incidencias');
+          }
+        });
+      }).catch(() => {
+        this.res = 'Campos erroneos';
       });
-    }).catch(() => {
-      this.res = 'Campos erroneos';
-    });
-    loading.dismiss();
-
+      loading.dismiss();
+    } else {
+      this.res = 'Campos vacios';
+    }
   }
 
 

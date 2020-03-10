@@ -2,7 +2,9 @@ import { MenuSlides } from './../../core/model/MenuSlides';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AutenticacionService } from '../../services/autenticacion.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
+import { ModalImagenGrandePage } from '../modal-imagen-grande/modal-imagen-grande.page';
+
 
 
 @Component({
@@ -20,7 +22,8 @@ export class MenuPage {
 
   constructor(private autenticacion: AutenticacionService,
               private routesv: Router,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController,
+              public modalCtrl: ModalController) {
             
     Object.keys(MenuSlides).forEach(key => this.arrayMenuSlide.push(MenuSlides[key]));
     this.arrayMenuSlide.pop();
@@ -37,6 +40,7 @@ export class MenuPage {
       this.res = 'Error al cerrar sesión';
     });
 
+    
 
 
 
@@ -48,6 +52,21 @@ export class MenuPage {
       loading.dismiss();
     });
   }
+
+  async showModal(img) {
+   
+    const myModalPage = await this.modalCtrl.create(
+      {
+        component: ModalImagenGrandePage,
+        componentProps: {
+          'img': img
+
+        }
+      });
+
+    return await myModalPage.present();
+  }
+
 
 
 

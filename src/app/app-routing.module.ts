@@ -32,10 +32,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/puesto-trabajo/puesto-trabajo.module').then(m => m.PuestoTrabajoPageModule)
   },
   {
-    path: 'noticias',
-    loadChildren: () => import('./pages/noticias/noticias.module').then(m => m.NoticiasPageModule)
-  },
-  {
     path: 'agregar-incidencia',
     loadChildren: () => import('./pages/agregar-incidencia/agregar-incidencia.module').then( m => m.AgregarIncidenciaPageModule)
   },
@@ -54,6 +50,10 @@ const routes: Routes = [
   {
     path: 'modal',
     loadChildren: () => import('./pages/modal/modal.module').then( m => m.ModalPageModule)
+  },
+  {
+    path: 'modal-imagen-grande',
+    loadChildren: () => import('./pages/modal-imagen-grande/modal-imagen-grande.module').then( m => m.ModalImagenGrandePageModule)
   }
 ];
 

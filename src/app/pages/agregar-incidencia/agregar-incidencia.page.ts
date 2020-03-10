@@ -10,7 +10,7 @@ import * as firebase from 'firebase';
 import { LoadingController } from '@ionic/angular';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
-declare var google;
+
 
 @Component({
   selector: 'app-agregar-incidencia',
@@ -27,7 +27,7 @@ export class AgregarIncidenciaPage  {
   localizacion;
   descripcion;
   grupoControl: FormGroup;
-
+  resultadoImage: any;
 
  
 
@@ -90,6 +90,7 @@ export class AgregarIncidenciaPage  {
     this.camera.getPicture(options)
       .then(imageData => {
         console.log(imageData);
+        this.resultadoImage = imageData;
         this.image = `data:image/jpeg;base64,${imageData}`;
       })
       .catch(error => {
@@ -109,6 +110,7 @@ export class AgregarIncidenciaPage  {
     };
     this.camera.getPicture(optionsGalery)
       .then(imageData => {
+        this.resultadoImage = imageData;
         console.log(imageData);
         this.image = `data:image/jpeg;base64,${imageData}`;
       })
@@ -133,7 +135,8 @@ export class AgregarIncidenciaPage  {
     );
 
     
-    if (this.grupoControl.valid){
+    if ((this.grupoControl.valid) && (this.resultadoImage.length > 0)) {
+     
       const loading = await this.loadingCtrl.create();
       loading.present();
     this.incidenciaService.add(incidencia).then(data => {
@@ -145,7 +148,7 @@ export class AgregarIncidenciaPage  {
       this.res = 'Error al guardar incidencia';
     });
   }else{
-    this.res = 'Por favor rellena todo los campos';
+    this.res = 'Por favor rellena todo los campos (Foto incluida)';
   }
   }
 

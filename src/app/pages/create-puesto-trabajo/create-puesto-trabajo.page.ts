@@ -36,7 +36,6 @@ export class CreatePuestoTrabajoPage implements OnInit {
 
   ngOnInit() {
   }
-  
 
    private crearGrupoControl() {
     this.grupoControl = new FormGroup({

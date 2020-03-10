@@ -1,13 +1,15 @@
-import { Localizacion } from './../../core/model/Localizacion';
+
 import { TipoIncidencia } from '../../core/model/TipoIncidencia';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { IncidenciaService } from 'src/app/services/incidencia.service';
-import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
+
 import * as firebase from 'firebase';
 import { LoadingController } from '@ionic/angular';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+
 declare var google;
 
 @Component({
@@ -15,9 +17,8 @@ declare var google;
   templateUrl: './agregar-incidencia.page.html',
   styleUrls: ['./agregar-incidencia.page.scss'],
 })
-export class AgregarIncidenciaPage implements OnInit {
+export class AgregarIncidenciaPage  {
 
-  
   image: string;
   res: string;
   itemSeleccionado: string;
@@ -25,8 +26,10 @@ export class AgregarIncidenciaPage implements OnInit {
   img;
   localizacion;
   descripcion;
-  
+  grupoControl: FormGroup;
 
+
+ 
 
 
   constructor(
@@ -34,13 +37,48 @@ export class AgregarIncidenciaPage implements OnInit {
               public router: Router,
               private camera: Camera,
               private incidenciaService: IncidenciaService,
-              private autenticationService: AutenticacionService) {
+              private autenticationService: AutenticacionService,
+             ) {
+              this.crearGrupoControl();
               this.itemSeleccionado = this.router.getCurrentNavigation().extras.state.itemSeleccionado;
   }
 
-  ngOnInit() {
-   
+
+
+
+  private crearGrupoControl() {
+    this.grupoControl = new FormGroup({
+      regexDescripcion: new FormControl(
+        Validators.required,
+        Validators.compose([ Validators.required, Validators.minLength(5)])
+      ),
+
+    });
   }
+
+/*  enviarCorreo( ): boolean {
+    this.emailComposer
+    .isAvailable()
+    .then((available: boolean) => {
+      if (available) {
+        const email = {
+          to: 'sergionetflix2015calamonte@gmail.com',
+          subject: 'Hola',
+          body: 'Nueva incidencia en el pueblo',
+          attachments: [
+          ],
+          isHtml: true
+        };
+        this.emailComposer.open(email);
+        return true;
+      }
+    })
+    .catch(() => {
+      return false;
+    });
+    return null;
+  }*/
+
 
   getPicture() {
     const options: CameraOptions = {
@@ -59,7 +97,7 @@ export class AgregarIncidenciaPage implements OnInit {
       });
 
   }
-  getGalery(){
+  getGalery() {
     const optionsGalery: CameraOptions = {
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
     destinationType: this.camera.DestinationType.DATA_URL,
@@ -84,6 +122,7 @@ export class AgregarIncidenciaPage implements OnInit {
     return firebase.storage().ref().child('incidencias').child(imageName).putString(this.image, 'data_url');
   }
 
+
   async enviarIncidencia() {
 
     const incidencia: TipoIncidencia = new TipoIncidencia(
@@ -93,57 +132,25 @@ export class AgregarIncidenciaPage implements OnInit {
       this.descripcion,
     );
 
-    const loading = await this.loadingCtrl.create();
-    loading.present();
-
-
-
-
+    
+    if (this.grupoControl.valid){
+      const loading = await this.loadingCtrl.create();
+      loading.present();
     this.incidenciaService.add(incidencia).then(data => {
-      this.addImage(data.id);
-      this.loadingCtrl.dismiss();
-      this.router.navigateByUrl('/menu');
-      this.autenticationService.showAlert('Incidencia registrada', 'Gracias, intentaremos solventarlas lo antes posible.');
+          this.addImage(data.id);
+          this.loadingCtrl.dismiss();
+          this.router.navigateByUrl('/menu');
+          this.autenticationService.showAlert('Incidencia registrada', 'Gracias, intentaremos solventarlas lo antes posible.');
     }).catch(data => {
       this.res = 'Error al guardar incidencia';
     });
-
+  }else{
+    this.res = 'Por favor rellena todo los campos';
+  }
   }
 
-  // async loadMap() {
-  //   const loading = await this.loadingCtrl.create();
-  //   loading.present();
-  //   const myLatLng = await this.getLocation();
-  //   this.geolocalizacion = new Localizacion(myLatLng.lat, myLatLng.lng);
-  //   console.log('Latitud: ' + myLatLng.lat + ' Longitud: ' + myLatLng.lng);
-  //   const mapEle: HTMLElement = document.getElementById('map');
-  //   this.mapRef = new google.maps.Map(mapEle, {
-  //     center: myLatLng,
-  //     zoom: 12
-  //   });
-  //   google.maps.event
-  //     .addListenerOnce(this.mapRef, 'idle', () => {
-  //       loading.dismiss();
-  //       this.addMaker(myLatLng.lat, myLatLng.lng);
-  //     });
-  // }
 
-  // private addMaker(lat: number, lng: number) {
-  //   const marker = new google.maps.Marker({
-  //     position: { lat, lng },
-  //     map: this.mapRef,
-  //     title: 'Hello World!'
-  //   });
-  // }
 
-  // private async getLocation(): Promise<any> {
-  //   const rta = await this.geolocation.getCurrentPosition();
-  //   console.log(rta.coords);
-  //   return {
-  //     lat: rta.coords.latitude,
-  //     lng: rta.coords.longitude
-  //   };
-  // }
 
 
 }

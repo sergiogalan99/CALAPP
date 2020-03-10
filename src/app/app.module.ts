@@ -1,3 +1,4 @@
+
 import { HomePage } from './pages/home/home.page';
 import { Camera } from '@ionic-native/camera/ngx';
 
@@ -19,6 +20,11 @@ import { AutenticacionService } from './services/autenticacion.service';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
+
+
 
 
 @NgModule({
@@ -41,7 +47,10 @@ import { AngularFireStorage } from '@angular/fire/storage';
     AngularFireAuth,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireStorage
+    AngularFireStorage,
+    EmailComposer,
+    Geolocation,
+   
   ],
   bootstrap: [AppComponent]
 })

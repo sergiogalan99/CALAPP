@@ -1,16 +1,16 @@
 import { AutenticacionService } from '../../services/autenticacion.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage{
-  loginError: string;
+export class HomePage {
+  res: string;
   email: '';
   password: '';
   constructor(
@@ -21,7 +21,7 @@ export class HomePage{
 
   }
 
- 
+
 
   async login() {
     const loading = await this.loadingCtrl.create();
@@ -34,8 +34,10 @@ export class HomePage{
           this.routesv.navigateByUrl('/all-incidencias');
         }
       });
-      loading.dismiss();
+    }).catch(() => {
+      this.res = 'Campos erroneos';
     });
+    loading.dismiss();
 
   }
 

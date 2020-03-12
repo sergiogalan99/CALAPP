@@ -31,12 +31,10 @@ res: string;
     loading.present();
     this.incidenciaService.getAll().subscribe(querySnapshot => {
       querySnapshot.forEach(doc => {
-        //console.log(doc.id, ' => ', doc.data());
         const incidencia = doc.data(); 
         this.incidenciaService.getImage(doc.id).then(imageURL => {
           this.incidencias.push({image: imageURL, data: incidencia});
         });
-       
       });
       loading.dismiss();
     });

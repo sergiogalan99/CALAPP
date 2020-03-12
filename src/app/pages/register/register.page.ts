@@ -38,7 +38,6 @@ export class RegisterPage  {
       const loading = await this.loadingCtrl.create();
       loading.present();
       this.auth.signUp(this.email, this.password).then(() => {
-        this.enviarCorreo();
         this.routesv.navigateByUrl('/menu');
       }), error => this.loginError = error.message;
       loading.dismiss();
@@ -55,30 +54,6 @@ export class RegisterPage  {
       this.type = 'password';
     }
   }
-
-    enviarCorreo(): boolean {
-    this.emailComposer
-    .isAvailable()
-    .then((available: boolean) => {
-      if (available) {
-        const email = {
-          to: 'sergionetflix2015calamonte@gmail.com',
-          subject: 'Hola',
-          body: 'Nueva incidencia en el pueblo',
-          attachments: [
-          ],
-          isHtml: true
-        };
-        this.emailComposer.open(email);
-        return true;
-      }
-    })
-    .catch(() => {
-      return false;
-    });
-    return null;
-  }
-
 
 
 }

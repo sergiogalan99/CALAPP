@@ -19,7 +19,6 @@ res: string;
               private loadingCtrl: LoadingController,
               private autenticacion: AutenticacionService,
               private router: Router) {
-               
   }
 
   ionViewDidEnter() {
@@ -37,8 +36,9 @@ res: string;
         this.incidenciaService.getImage(doc.id).then(imageURL => {
           this.incidencias.push({image: imageURL, data: incidencia});
         });
-        loading.dismiss();
+       
       });
+      loading.dismiss();
     });
   }
   async logout() {
@@ -52,14 +52,6 @@ res: string;
      });
 
 }
-
-delete(id: string) {
-  console.log(id);
-  this.incidenciaService.delete(id).then(() => {
-    this.incidencias = [];
-  });
-}
-
 
 
 }

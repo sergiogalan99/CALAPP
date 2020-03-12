@@ -55,7 +55,6 @@ import { ModalPageModule } from './pages/modal/modal.module';
     AngularFireStorage,
     EmailComposer,
     Geolocation,
-   
   ],
   bootstrap: [AppComponent]
 })

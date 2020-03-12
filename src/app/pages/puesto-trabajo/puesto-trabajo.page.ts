@@ -14,8 +14,7 @@ import { ModalPage } from '../modal/modal.page';
 })
 export class PuestoTrabajoPage {
   private puestos: Array<any>;
-  
- 
+
   constructor(private puestoService: PuestoTrabajoService,
               private loadingCtrl: LoadingController,
               public modalCtrl: ModalController) {

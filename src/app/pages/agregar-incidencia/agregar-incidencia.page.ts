@@ -44,8 +44,6 @@ export class AgregarIncidenciaPage  {
   }
 
 
-
-
   private crearGrupoControl() {
     this.grupoControl = new FormGroup({
       regexDescripcion: new FormControl(
@@ -56,28 +54,7 @@ export class AgregarIncidenciaPage  {
     });
   }
 
-/*  enviarCorreo( ): boolean {
-    this.emailComposer
-    .isAvailable()
-    .then((available: boolean) => {
-      if (available) {
-        const email = {
-          to: 'sergionetflix2015calamonte@gmail.com',
-          subject: 'Hola',
-          body: 'Nueva incidencia en el pueblo',
-          attachments: [
-          ],
-          isHtml: true
-        };
-        this.emailComposer.open(email);
-        return true;
-      }
-    })
-    .catch(() => {
-      return false;
-    });
-    return null;
-  }*/
+
 
 
   getPicture() {

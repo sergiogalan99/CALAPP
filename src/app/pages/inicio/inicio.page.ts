@@ -29,6 +29,7 @@ interface Marker {
 export class InicioPage {
   res: string;
   map = null;
+  direccion: string;
 
   constructor() { }
 
@@ -39,7 +40,7 @@ export class InicioPage {
 
   loadMap() {
     const mapEle: HTMLElement = document.getElementById('map');
-    const myLatLng = {lat: 38.887100, lng:  -6.387472};
+    const myLatLng = { lat: 38.887100, lng: -6.387472 };
     this.map = new google.maps.Map(mapEle, {
       center: myLatLng,
       zoom: 15
@@ -59,7 +60,11 @@ export class InicioPage {
   }
 
 
-}
+
+    }
+
+
+
 
 
 

@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { LoadingController } from '@ionic/angular';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage {
+export class RegisterPage  {
 
 
 
@@ -25,21 +26,23 @@ export class RegisterPage {
     private auth: AutenticacionService,
     private routesv: Router,
     private loadingCtrl: LoadingController,
+    private emailComposer: EmailComposer
   ) {
 
   }
+
 
   async signUp() {
 
     if (this.password == this.passwordConf) {
       const loading = await this.loadingCtrl.create();
       loading.present();
-      this.auth.signUp(this.email, this.password).then(()=>{
-        loading.dismiss();
-       this.routesv.navigateByUrl('/menu');
+      this.auth.signUp(this.email, this.password).then(() => {
+        this.enviarCorreo();
+        this.routesv.navigateByUrl('/menu');
       }), error => this.loginError = error.message;
-        
-    }else{
+      loading.dismiss();
+    } else {
       this.res = 'Las contraseñas no coinciden';
     }
   }
@@ -51,6 +54,29 @@ export class RegisterPage {
     } else {
       this.type = 'password';
     }
+  }
+
+    enviarCorreo(): boolean {
+    this.emailComposer
+    .isAvailable()
+    .then((available: boolean) => {
+      if (available) {
+        const email = {
+          to: 'sergionetflix2015calamonte@gmail.com',
+          subject: 'Hola',
+          body: 'Nueva incidencia en el pueblo',
+          attachments: [
+          ],
+          isHtml: true
+        };
+        this.emailComposer.open(email);
+        return true;
+      }
+    })
+    .catch(() => {
+      return false;
+    });
+    return null;
   }
 
 

@@ -16,7 +16,7 @@ export class MenuPage {
 
   email = '';
   password = '';
-  status = ''; 
+  status = '';
   res: string;
   private arrayMenuSlide: string[] = [];
 
@@ -24,7 +24,7 @@ export class MenuPage {
               private routesv: Router,
               private loadingCtrl: LoadingController,
               public modalCtrl: ModalController) {
-            
+
     Object.keys(MenuSlides).forEach(key => this.arrayMenuSlide.push(MenuSlides[key]));
     this.arrayMenuSlide.pop();
   }
@@ -40,9 +40,6 @@ export class MenuPage {
       this.res = 'Error al cerrar sesión';
     });
 
-    
-
-
 
   }
   async incidencia() {
@@ -54,7 +51,6 @@ export class MenuPage {
   }
 
   async showModal(img) {
-   
     const myModalPage = await this.modalCtrl.create(
       {
         component: ModalImagenGrandePage,

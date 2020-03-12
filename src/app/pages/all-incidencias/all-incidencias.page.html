@@ -33,7 +33,6 @@
   <ion-card style="background-color: black;color:white" *ngFor="let incidencia of incidencias">
     <img class="logo-img" [src]="incidencia.image"/>
     <ion-card-header class="cardIncidencias" >
-      <ion-icon style="font-size: 26px;" (click)="delete(incidencia.id)" name="trash"></ion-icon>
       <ion-card-subtitle class="cardIncidencias"> 
         <ion-datetime displayFormat="DD-MM-YYYY" value="{{incidencia.data.fecha}}"></ion-datetime>
        </ion-card-subtitle>

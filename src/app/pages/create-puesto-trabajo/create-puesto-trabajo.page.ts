@@ -23,7 +23,7 @@ export class CreatePuestoTrabajoPage implements OnInit {
   trabajadores;
   name: string;
   grupoControl: FormGroup;
-  respuesta: boolean = false;
+  respuesta = false;
   constructor(public router: Router,
               private puestosService: PuestoTrabajoService,
               private autentication: AutenticacionService,
@@ -61,7 +61,8 @@ export class CreatePuestoTrabajoPage implements OnInit {
       ),
       regexCorreo: new FormControl(
         Validators.required,
-        Validators.compose([ Validators.required, Validators.pattern('^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$')])),
+        Validators.compose([ Validators.required, Validators.pattern('^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$')])
+      ),
     });
   }
 
@@ -76,7 +77,7 @@ export class CreatePuestoTrabajoPage implements OnInit {
       this.telefono,
       this.trabajadores,
     );
-   
+
     if (this.grupoControl.valid) {
       const loading = await this.loadingCtrl.create();
       loading.present();
